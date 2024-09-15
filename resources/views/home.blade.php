@@ -34,8 +34,8 @@
                 <td>{{ $train->departure_station }}</td>
                 <td>{{ $train->arrival_station }}</td>
                 <td>{{ $train->departure_date }}</td>
-                <td>{{ $train->departure_time }}</td>
-                <td>{{ $train->arrival_time }}</td>
+                <td>{{ substr($train->departure_time, 0, 5) }}</td>
+                <td>{{ substr($train->arrival_time, 0, 5) }}</td>
                 <td>{{ $train->train_code }}</td>
                 <td>{{ $train->number_of_carriages }}</td>
                 <td>{{ $train->on_time ? 'Sì' : 'No' }}</td>
