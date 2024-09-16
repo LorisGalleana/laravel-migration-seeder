@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="container my-5">
-    <h1>I miei film</h1>
+    <h1>I miei viaggi</h1>
 
     <table class="table">
         <thead>
