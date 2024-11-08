@@ -1,66 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+# LARAVEL-MIGRATION-SEEDER
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Descrizione
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**LARAVEL-MIGRATION-SEEDER** è un progetto che esplora l'uso delle migrazioni, dei seeder e dei model in Laravel. L'obiettivo è creare una tabella `trains` per memorizzare i dati sui treni e implementare la logica per visualizzare i treni in partenza dalla data odierna.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Funzionalità
 
-## Learning Laravel
+1. **Creazione della Tabella Trains**:
+   - Creazione di una migrazione per la tabella `trains` con le seguenti colonne:
+     - **azienda**: nome dell'azienda ferroviaria.
+     - **stazione_di_partenza**: nome della stazione di partenza.
+     - **stazione_di_arrivo**: nome della stazione di arrivo.
+     - **orario_di_partenza**: orario di partenza del treno.
+     - **orario_di_arrivo**: orario di arrivo del treno.
+     - **codice_treno**: codice identificativo del treno.
+     - **numero_carrozze**: numero di carrozze del treno.
+     - **in_orario**: un flag per indicare se il treno è in orario.
+     - **cancellato**: un flag per indicare se il treno è stato cancellato.
+     - Eventuali altre colonne necessarie per il corretto funzionamento della tabella.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. **Popolamento Iniziale dei Dati**:
+   - Inserimento dei dati nella tabella tramite PhpMyAdmin (opzionale o iniziale).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+3. **Creazione del Model Train**:
+   - Creazione di un model **Train** tramite il comando `php artisan make:model Train`, che rappresenta la tabella `trains` nel database.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+4. **Creazione del Controller**:
+   - Creazione di un controller **TrainController** con il comando `php artisan make:controller TrainController`.
+   - Implementazione della funzione `index()` all'interno del controller per recuperare tutti i treni in partenza dalla data odierna.
 
-## Laravel Sponsors
+5. **Visualizzazione dei Dati**:
+   - Creazione di una view che mostri i treni in partenza dalla data odierna, visualizzando i dati come **azienda**, **stazione di partenza**, **orario di partenza**, e **codice treno**.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Bonus (Facoltativo)
 
-### Premium Partners
+1. **Seeder**:
+   - Creazione di un seeder per popolare la tabella `trains` con dati di esempio, in modo da facilitare i test.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. **Filtraggio dei Treni**:
+   - Aggiunta della funzionalità per filtrare i treni in partenza da una stazione specifica o che arrivano in una stazione specifica.
 
-## Contributing
+### Struttura del Progetto
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. **app/Models/Train.php**: Il model **Train** che rappresenta la tabella `trains` nel database.
+2. **app/Http/Controllers/TrainController.php**: Il controller che gestisce la logica per la visualizzazione dei treni in partenza dalla data odierna.
+3. **database/migrations/XXXX_XX_XX_create_trains_table.php**: La migrazione per la creazione della tabella `trains`.
+4. **resources/views/trains.blade.php**: La view per visualizzare i treni in partenza dalla data odierna.
+5. **routes/web.php**: La rotta che collega la pagina della home con la funzione del controller.
 
-## Code of Conduct
+### Tecnologie utilizzate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **Laravel**: Framework PHP per lo sviluppo del progetto.
+- **Eloquent ORM**: Il sistema di ORM di Laravel utilizzato per interagire con il database.
+- **Blade**: Motore di templating di Laravel per la gestione delle views.
+- **MySQL**: Sistema di gestione del database per memorizzare i dati dei treni.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
